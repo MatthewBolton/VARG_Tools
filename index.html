@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARG-Tools - Volcanic Archive Research Gateway</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #7a8a99;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .description {
+            color: #555;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .launch-button {
+            background: linear-gradient(135deg, #1565c0 0%, #3c8dbc 100%);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.3em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(60, 141, 188, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .launch-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(60, 141, 188, 0.6);
+        }
+
+        .feedback-button {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 1em;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .feedback-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.5);
+            background: #1b5e20;
+        }
+
+        .launch-button:active {
+            transform: translateY(-1px);
+        }
+
+        .fallback-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .fallback-title {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .fallback-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .fallback-link {
+            color: #1565c0;
+            text-decoration: none;
+            font-size: 0.95em;
+            padding: 8px 20px;
+            border: 2px solid #1565c0;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .fallback-link:hover {
+            background: #1565c0;
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3c8dbc;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            color: #95a5a6;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .launch-button {
+                padding: 15px 40px;
+                font-size: 1.1em;
+            }
+
+            .fallback-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .loading {
+            display: none;
+            color: #1565c0;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .loading-notice {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .important-notice {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            color: #856404;
+        }
+
+        .important-notice h3 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .important-notice ul {
+            margin: 10px 0 0 20px;
+            line-height: 1.8;
+        }
+
+        .important-notice strong {
+            color: #cc6600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VARG-Tools</h1>
+        <p class="subtitle">Application Demo Access</p>
+        <p class="description">
+            This is a closed demo and review stage of the application. 
+            <strong>Not open to the general public.</strong> 
+            Please do not share this link without permission.
+        </p>
+
+        <button class="launch-button" onclick="launchApp()">
+            Launch Application
+        </button>
+        <div class="loading" id="loadingText">Redirecting...</div>
+        <p class="loading-notice">Please be patient - it takes a moment for the instance to start up</p>
+
+        <a href="https://forms.gle/Phe3zW7HaEa2ncPc8" target="_blank" rel="noopener noreferrer" class="feedback-button">
+            Submit Feedback
+        </a>
+
+        <p style="margin-top: 20px; color: #555; font-size: 0.95em;">
+            Questions or concerns? Email <a href="mailto:bolton1+varg@ualberta.ca" style="color: #1565c0; text-decoration: none;">bolton1+varg@ualberta.ca</a>
+        </p>
+
+        <div class="important-notice">
+            <h3>Important Usage Information</h3>
+            <ul>
+                <li><strong>Automatic Disconnection:</strong> Instances disconnect after 15 minutes of inactivity to conserve server time</li>
+                <li><strong>Save Your Work:</strong> Use the Save State function regularly to preserve your progress</li>
+                <li><strong>Save UMAP Embeddings:</strong> Download any UMAP embeddings you generate</li>
+                <li><strong>Version Compatibility:</strong> Every effort will be made to retain compatibility with future versions, but it cannot be guaranteed</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>Access Notice</h3>
+            <ul>
+                <li>This demo is for authorized testers and reviewers only</li>
+                <li>Each instance has a monthly limit of access hours</li>
+                <li>Access is managed through this page to balance server usage</li>
+                <li>You will be randomly directed to one of two app instances</li>
+            </ul>
+        </div>
+
+        <div class="fallback-section">
+            <p class="fallback-title">Direct Links (if main button fails):</p>
+            <div class="fallback-links">
+                <a href="https://varg.shinyapps.io/VARGtools_demo/" target="_blank" rel="noopener noreferrer" class="fallback-link">
+                    Link A (Primary Instance)
+                </a>
+                <a href="https://matthew-bolton.shinyapps.io/VARGtools_demo/" target="_blank" rel="noopener noreferrer" class="fallback-link">
+                    Link B (Secondary Instance)
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Matthew S M Bolton</p>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // TRAFFIC WEIGHT CONFIGURATION
+        // ========================================
+        // This value controls the percentage of users directed to App A
+        // trafficWeight = 0.2 means 20% to App A, 80% to App B
+        // trafficWeight = 0.5 means 50% to App A, 50% to App B
+        // trafficWeight = 0.1 means 10% to App A, 90% to App B
+        // 
+        // Adjust this value based on remaining server hours
+        const trafficWeight = 0.2;  // Currently: 20% App A, 80% App B
+        // ========================================
+
+        const APP_A_URL = 'https://varg.shinyapps.io/VARGtools_demo/';
+        const APP_B_URL = 'https://matthew-bolton.shinyapps.io/VARGtools_demo/';
+
+        function launchApp() {
+            // Show loading indicator
+            document.getElementById('loadingText').style.display = 'block';
+            
+            // Weighted random selection
+            const random = Math.random();
+            const selectedUrl = random < trafficWeight ? APP_A_URL : APP_B_URL;
+            
+            // Log for debugging (optional - remove in production)
+            console.log(`Traffic Weight: ${trafficWeight}, Random: ${random.toFixed(3)}, Selected: ${selectedUrl}`);
+            
+            // Open in new tab
+            window.open(selectedUrl, '_blank');
+            
+            // Hide loading indicator after a short delay
+            setTimeout(() => {
+                document.getElementById('loadingText').style.display = 'none';
+            }, 1000);
+        }
+
+        // Optional: Add keyboard shortcut (Enter key)
+        document.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                launchApp();
+            }
+        });
+    </script>
+</body>
+</html>

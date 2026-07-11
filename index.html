@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VARG-Tools | App Access</title>
+    <title>VARG-Tools | Web Application</title>
     <style>
         :root {
             --ink: #2c3e50;
@@ -129,6 +129,16 @@
             padding: 22px;
         }
 
+        .badge-image {
+            display: block;
+            width: min(100%, 260px);
+            height: auto;
+            margin: 0 0 18px;
+            border-radius: 16px;
+            border: 1px solid rgba(44, 62, 80, 0.08);
+            box-shadow: 0 10px 24px rgba(44, 62, 80, 0.12);
+        }
+
         .lead-card h2,
         .section h2 {
             margin: 0 0 10px;
@@ -221,6 +231,17 @@
 
         .button-secondary:hover {
             box-shadow: 0 14px 30px rgba(24, 188, 156, 0.26);
+        }
+
+        .button-outline {
+            background: #ffffff;
+            border-color: var(--line);
+            color: var(--ink);
+            box-shadow: 0 10px 24px rgba(44, 62, 80, 0.08);
+        }
+
+        .button-outline:hover {
+            box-shadow: 0 14px 30px rgba(44, 62, 80, 0.12);
         }
 
         .mirror-section,
@@ -449,6 +470,19 @@
                 padding: 12px;
             }
 
+            .brand {
+                gap: 10px;
+            }
+
+            .brand .symbol {
+                width: 46px;
+                height: 46px;
+            }
+
+            .brand .wordmark {
+                width: min(100%, 248px);
+            }
+
             .shell {
                 border-radius: 22px;
             }
@@ -473,17 +507,16 @@
                 </div>
                 <div class="hero">
                     <div>
-                        <div class="eyebrow">Closed demo access</div>
+                        <div class="eyebrow">Public research application</div>
                         <p class="subtitle">
-                            Launch the hosted application for geochemical data processing, visualization, and chronology.
-                            No install is needed and it runs in your browser.
+                            Launch the current hosted VARG-Tools release. The project was presented with the EGU 2026 poster
+                            <strong>"VARG-Tools: Browser-Based Software to Streamline Tephra Correlation and Bayesian Age Modelling"</strong>.
+                            The meeting abstract remains available for the poster context.
                         </p>
                         <p class="subtitle">
-                            While this app was designed for tephra (glass) compositional data and stratigraphic
-                            contexts constrained by absolute chronology (radiocarbon or calendar ages), the toolset
-                            herein can also be applied to other compositional or structured data types from diverse
-                            settings wherever clustering, population identification, signal alignment, wiggle-matching,
-                            or scatter plotting is needed.
+                            VARG-Tools supports geochemical data processing, visualization, and chronology building for
+                            tephra correlation workflows. The hosted service runs each signed-in user in a dedicated
+                            application session with bounded compute resources.
                         </p>
 
                         <div class="chip-row" aria-label="App modules">
@@ -493,106 +526,56 @@
                         </div>
 
                         <div class="actions">
-                            <button class="button button-primary" type="button" onclick="launchApp()">
-                                Launch application
-                            </button>
-                            <a class="button button-secondary" href="https://forms.gle/Phe3zW7HaEa2ncPc8" target="_blank" rel="noopener noreferrer">
-                                Submit feedback
+                            <a class="button button-primary" href="https://134-87-11-226.arbutus.alliancecan.ca/" target="_blank" rel="noopener noreferrer">
+                                Launch VARG-Tools
+                            </a>
+                            <a class="button button-outline" href="https://meetingorganizer.copernicus.org/EGU26/EGU26-5991.html" target="_blank" rel="noopener noreferrer">
+                                View EGU abstract
                             </a>
                         </div>
 
-                        <div class="loading" id="loadingText" aria-live="polite">Opening the app...</div>
-                        <p class="status-line">
-                            Direct mirrors:
-                            <a class="muted-link" href="https://varg.shinyapps.io/VARGtools_demo/" target="_blank" rel="noopener noreferrer">Mirror A</a>
-                            /
-                            <a class="muted-link" href="https://matthew-bolton.shinyapps.io/VARGtools_demo/" target="_blank" rel="noopener noreferrer">Mirror B</a>.
-                            Questions can go to
-                            <a class="muted-link" href="mailto:bolton1+varg@ualberta.ca">bolton1+varg@ualberta.ca</a>.
-                        </p>
+                        <div class="section notice">
+                            <h2>Hosted app notes</h2>
+                            <ul class="info-list">
+                                <li>Instances may disconnect after inactivity to conserve server time.</li>
+                                <li>Download or save important UMAP embeddings, exports, and project state.</li>
+                                <li>Use the in-app guide for workflow details and data requirements.</li>
+                            </ul>
+                        </div>
+
+                        <div class="section">
+                            <h2>Need help?</h2>
+                            <p>
+                                Legacy conference-demo mirrors (may not match the current release):
+                                <a class="muted-link" href="https://varg.shinyapps.io/VARGtools_demo/" target="_blank" rel="noopener noreferrer">ShinyApps mirror A</a>
+                                /
+                                <a class="muted-link" href="https://matthew-bolton.shinyapps.io/VARGtools_demo/" target="_blank" rel="noopener noreferrer">ShinyApps mirror B</a>.
+                                Questions can go to
+                                <a class="muted-link" href="mailto:bolton1+varg@ualberta.ca">bolton1+varg@ualberta.ca</a>.
+                            </p>
+                        </div>
+
                     </div>
 
                     <div class="lead-card">
-                        <h2>What to expect</h2>
-                        <p><span class="lead-emphasis">This is a reviewer and tester entry point for the VARG-Tools app. It is not public.</span></p>
+                        <img class="badge-image" src="www/egu_ospp_label_yellow.png" alt="EGU Outstanding Student and PhD candidate Presentation contest badge">
+                        <h2>Poster and OSPP note</h2>
+                        <p><span class="lead-emphasis">The EGU 2026 poster introduced the workflow demonstrated in the hosted application.</span></p>
                         <ul class="info-list">
-                            <li>Keep the link within the review group.</li>
-                            <li>Save your work inside the app before disconnects or browser changes.</li>
-                            <li>Use the in-app guide for workflow details and data requirements.</li>
+                            <li>The poster is entered in the Outstanding Student and PhD candidate Presentation contest.</li>
+                            <li>Eligible registered EGU participants are encouraged to vote using the evaluation form on the online presentation page.</li>
+                            <li>Please vote only if you are not a BSc or MSc student or PhD candidate, are not participating in OSPP, are not a co-author, and do not share the first author's affiliation.</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="install-section">
-                    <div class="install-header">
-                        <div>
-                            <span class="coming-soon">Coming soon</span>
-                            <h2>Local install options</h2>
-                        </div>
-                        <p>
-                            Space reserved for future local installs on Mac and Windows, plus a GitHub source-code link for
-                            users who want to run the full R project themselves. Check back here for the release details.
-                        </p>
-                    </div>
-
-                    <div class="install-grid">
-                        <div class="install-card">
-                            <h3>Mac</h3>
-                            <p>Installer slot reserved for a future macOS release.</p>
-                        </div>
-                        <div class="install-card">
-                            <h3>Windows</h3>
-                            <p>Installer slot reserved for a future Windows release.</p>
-                        </div>
-                        <div class="install-card">
-                            <h3>GitHub source</h3>
-                            <p>Link reserved for the full code repository and R run instructions.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid-2">
-                    <div class="section notice">
-                        <h2>Usage notes</h2>
-                        <ul class="info-list">
-                            <li>Instances may disconnect after inactivity to conserve server time.</li>
-                            <li>Download or save important UMAP embeddings, exports, and project state.</li>
-                            <li>Compatibility is maintained as far as possible, but future changes can still alter behavior.</li>
-                        </ul>
-                    </div>
-
-                    <div class="section">
-                        <h2>Need help</h2>
-                        <p>If something looks off, send feedback through the form above or email the project address.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="footer">
-                <span>&copy; 2026 Matthew S M Bolton</span>
+                <span>&copy; 2026 Matthew S M Bolton &middot; <a class="muted-link" href="mailto:bolton1+varg@ualberta.ca">Support</a> &middot; <a class="muted-link" href="privacy.html">Privacy</a> &middot; <a class="muted-link" href="terms.html">Terms of use</a></span>
             </div>
         </div>
     </div>
 
-    <script>
-        const MIRRORS = [
-            "https://varg.shinyapps.io/VARGtools_demo/",
-            "https://matthew-bolton.shinyapps.io/VARGtools_demo/"
-        ];
-        const MIRROR_WEIGHT = 0.5;
-
-        function launchApp() {
-            const loadingText = document.getElementById("loadingText");
-            loadingText.style.display = "block";
-
-            const selectedUrl = Math.random() < MIRROR_WEIGHT ? MIRRORS[0] : MIRRORS[1];
-            window.open(selectedUrl, "_blank", "noopener,noreferrer");
-
-            window.setTimeout(function () {
-                loadingText.style.display = "none";
-            }, 1000);
-        }
-
-    </script>
 </body>
 </html>

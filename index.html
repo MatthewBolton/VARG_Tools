@@ -533,7 +533,7 @@
                         <div class="section notice">
                             <h2>Hosted app notes</h2>
                             <ul class="info-list">
-                                <li>Hosted sessions close after one hour without user activity; active sessions may continue beyond one hour.</li>
+                                <li>Hosted sessions close after one hour without user activity. Running analyses suspend this limit, and the full hour restarts when an analysis finishes or is cancelled.</li>
                                 <li>Download or save important UMAP embeddings, exports, and project state.</li>
                                 <li>Use <strong>Close Application</strong> when finished so another tester can start promptly.</li>
                                 <li>Use the in-app guide for workflow details and data requirements.</li>
@@ -560,6 +560,35 @@
                         </ul>
                     </div>
                 </div>
+
+                <section class="install-section" aria-labelledby="local-access-heading">
+                    <div class="install-header">
+                        <div>
+                            <h2 id="local-access-heading">Local and source access</h2>
+                            <p>Version 0.9.8 distributions are built from the same verified source snapshot. Choose the option that matches your computer.</p>
+                        </div>
+                    </div>
+                    <div class="install-grid">
+                        <article class="install-card">
+                            <h3>Windows standalone</h3>
+                            <p>Includes R and all required packages. Download, extract the ZIP, and run <strong>Launch VARG-Tools.cmd</strong>.</p>
+                            <p><a class="mirror-link" href="https://github.com/MatthewBolton/VARG-Tools/releases/latest/download/VARG-Tools-0.9.8-Windows-standalone.zip">Download for Windows</a></p>
+                            <p><a class="muted-link" href="https://github.com/MatthewBolton/VARG-Tools/releases/latest/download/VARG-Tools-0.9.8-Windows-standalone.zip.sha256">SHA-256 checksum</a></p>
+                        </article>
+                        <article class="install-card">
+                            <h3>For R users</h3>
+                            <p>Requires R 4.4 or newer. Run the included dependency installer once, then start VARG-Tools with the supplied launcher.</p>
+                            <p><a class="mirror-link" href="https://github.com/MatthewBolton/VARG-Tools/releases/latest/download/VARG-Tools-0.9.8-R.zip">Download R bundle</a></p>
+                            <p><a class="muted-link" href="https://github.com/MatthewBolton/VARG-Tools/releases/latest/download/VARG-Tools-0.9.8-R.zip.sha256">SHA-256 checksum</a></p>
+                        </article>
+                        <article class="install-card">
+                            <h3>Source code</h3>
+                            <p>Inspect, cite, or adapt the exact versioned source under the MIT License. The repository also contains the release validation workflow.</p>
+                            <p><a class="mirror-link" href="https://github.com/MatthewBolton/VARG-Tools">Open source repository</a></p>
+                            <p><a class="muted-link" href="https://github.com/MatthewBolton/VARG-Tools/releases/latest/download/VARG-Tools-0.9.8-source.zip">Download source snapshot</a> · <a class="muted-link" href="https://github.com/MatthewBolton/VARG-Tools/releases/latest/download/VARG-Tools-0.9.8-source.zip.sha256">checksum</a></p>
+                        </article>
+                    </div>
+                </section>
 
             </div>
 

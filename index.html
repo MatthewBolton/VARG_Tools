@@ -194,6 +194,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+            align-items: center;
             margin-top: 26px;
         }
 
@@ -212,9 +213,13 @@
         }
 
         .button-primary {
+            min-width: 260px;
+            min-height: 56px;
+            padding: 15px 24px;
             color: #ffffff;
             background: var(--navy);
             border-color: var(--navy);
+            font-size: 1.06rem;
         }
 
         .button-primary:hover {
@@ -223,16 +228,12 @@
             border-color: var(--navy-hover);
         }
 
-        .button-secondary {
-            color: var(--accent);
-            background: var(--surface);
-            border-color: var(--line-strong);
-        }
-
-        .button-secondary:hover {
-            color: var(--accent-hover);
-            background: var(--accent-soft);
-            border-color: var(--accent);
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 9px 4px;
+            font-weight: 750;
         }
 
         .access-note {
@@ -260,13 +261,16 @@
         }
 
         .workspace-preview {
-            margin: 34px 0 0;
+            width: min(100%, 940px);
+            margin: 30px 0 0;
         }
 
         .workspace-preview img {
             width: 100%;
-            height: auto;
+            height: 340px;
             display: block;
+            object-fit: cover;
+            object-position: top left;
             border: 1px solid var(--line-strong);
             border-radius: var(--radius);
             background: var(--surface);
@@ -457,6 +461,15 @@
                 width: 100%;
             }
 
+            .source-link {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .workspace-preview img {
+                height: 180px;
+            }
+
             .workflow {
                 align-items: flex-start;
                 flex-direction: column;
@@ -517,7 +530,7 @@
                 </p>
                 <div class="actions">
                     <a class="button button-primary" href="https://134-87-11-226.arbutus.alliancecan.ca/" target="_blank" rel="noopener noreferrer">Open hosted app</a>
-                    <a class="button button-secondary" href="#local-access">Local and source access</a>
+                    <a class="source-link" href="#local-access">Browse local and source options</a>
                 </div>
                 <p class="access-note">
                     The hosted release uses Google sign-in to limit automated use. Sessions close after one hour without user activity; active analyses remain open and restart the idle allowance when they finish.
